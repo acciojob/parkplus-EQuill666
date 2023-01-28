@@ -27,9 +27,10 @@ public class Spot {
         this.occupied = false;
     }
 
-    public Spot(SpotType spotType, int hourlyCharge) {
+    public Spot(SpotType spotType, int pricePerHour) {
         this.spotType = spotType;
-        this.pricePerHour = hourlyCharge;
+        this.pricePerHour = pricePerHour;
+        this.occupied=false;
     }
 
     public int getId() {
@@ -76,10 +77,11 @@ public class Spot {
         return pricePerHour;
     }
 
-    public void setPricePerHour(int hourlyCharge) {
-        this.pricePerHour = hourlyCharge;
+    public void setPricePerHour(int pricePerHour) {
+        this.pricePerHour = pricePerHour;
     }
 
     public Spot() {
+        this.occupied=false;
     }
 }

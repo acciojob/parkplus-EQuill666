@@ -11,16 +11,16 @@ public class Payment {
     private int id;
 
     @Column(columnDefinition = "TINYINT(1)")
-    private Boolean paymentDone;
+    private Boolean paymentCompleted;
 
     @Enumerated(EnumType.STRING)
     private PaymentMode paymentMode;
 
     public Payment(){
-        this.paymentDone = false;
+        this.paymentCompleted = false;
     }
-    public Payment(Boolean paymentDone, PaymentMode paymentMode) {
-        this.paymentDone = paymentDone;
+    public Payment(Boolean paymentCompleted, PaymentMode paymentMode) {
+        this.paymentCompleted = paymentCompleted;
         this.paymentMode = paymentMode;
     }
 
@@ -37,12 +37,12 @@ public class Payment {
         this.id = id;
     }
 
-    public Boolean getPaymentDone() {
-        return paymentDone;
+    public Boolean isPaymentCompleted() {
+        return paymentCompleted;
     }
 
-    public void setPaymentDone(Boolean paymentDone) {
-        this.paymentDone = paymentDone;
+    public void setPaymentCompleted(Boolean paymentCompleted) {
+        this.paymentCompleted = paymentCompleted;
     }
 
     public PaymentMode getPaymentMode() {
