@@ -12,7 +12,7 @@ public class Spot {
     private SpotType spotType;
 
     @Column(columnDefinition = "TINYINT(1)")
-    private Boolean available;
+    private Boolean occupied;
 
     @ManyToOne
     @JoinColumn
@@ -24,7 +24,7 @@ public class Spot {
     private int hourlyCharge;
 
     public Spot(Boolean available) {
-        this.available = false;
+        this.occupied = false;
     }
 
     public Spot(SpotType spotType, int hourlyCharge) {
@@ -49,11 +49,11 @@ public class Spot {
     }
 
     public Boolean getAvailable() {
-        return available;
+        return occupied;
     }
 
     public void setAvailable(Boolean available) {
-        this.available = available;
+        this.occupied = available;
     }
 
     public ParkingLot getParkingLot() {
