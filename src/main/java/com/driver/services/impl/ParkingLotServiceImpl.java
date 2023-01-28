@@ -1,5 +1,7 @@
 package com.driver.services.impl;
 
+import com.driver.model.ParkingLot;
+import com.driver.model.Spot;
 import com.driver.model.SpotType;
 import com.driver.repository.ParkingLotRepository;
 import com.driver.repository.SpotRepository;
@@ -18,12 +20,31 @@ public class ParkingLotServiceImpl implements ParkingLotService {
     SpotRepository spotRepository1;
     @Override
     public ParkingLot addParkingLot(String name, String address) {
-
+        ParkingLot parkingLot = new ParkingLot(name, address);
+        parkingLotRepository1.save(parkingLot);
+        return parkingLot;
     }
 
     @Override
     public Spot addSpot(int parkingLotId, Integer numberOfWheels, Integer pricePerHour) {
+        Spot spot = new Spot();
+        spot.setHourlyCharge(pricePerHour);
 
+        //Spot Type validation
+        if(numberOfWheels > 4){
+            spot.setSpotType(SpotType.OTHERS);
+        } else if (numberOfWheels > 2) {
+            spot.setSpotType(SpotType.FOUR_WHEELER);
+        }
+        else spot.setSpotType(SpotType.TWO_WHEELER);
+
+        ParkingLot parkingLot = parkingLotRepository1.findById(parkingLotId).get();
+        spot.setParkingLot(parkingLot);
+
+        parkingLot.getSpotList().add(spot);
+        parkingLotRepository1.save(parkingLot);
+
+        return spot;
     }
 
     @Override
