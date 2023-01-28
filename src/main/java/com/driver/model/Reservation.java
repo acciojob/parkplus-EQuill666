@@ -24,8 +24,8 @@ public class Reservation {
     @JoinColumn
     private User user;
 
-    public Reservation(int hours) {
-        this.numberOfHours = hours;
+    public Reservation(int numberOfHours) {
+        this.numberOfHours = numberOfHours;
     }
 
     public int getId() {
@@ -40,8 +40,8 @@ public class Reservation {
         return numberOfHours;
     }
 
-    public void setNumberOfHours(int hours) {
-        this.numberOfHours = hours;
+    public void setNumberOfHours(int numberOfHours) {
+        this.numberOfHours = numberOfHours;
     }
 
     public Payment getPayment() {
